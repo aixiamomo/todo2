@@ -15,4 +15,20 @@
 这样删除更自然：点击删除按钮，使用jQuery的slideUp()函数隐藏条目，在后台仍然指定相应的视图函数，但是这个函数不跳转到任何页面。（只是在数据库里删除条目），只返回下面的204状态码（代表无内容）。
 `return (''), 204`
 
+## 安装运行
+```
+pip install -r requirements.txt
+
+python app.py shell
+>>> from app import db, Category
+>>> db.create_all()
+>>> db.session.commit()
+>>> inbox = Category(name='Inbox')
+>>> done = Category(name=u'Done')
+>>> db.session.add(inbox)
+>>> db.session.add(done)
+>>> db.session.commit()
+
+python app.py runserver
+```
 
